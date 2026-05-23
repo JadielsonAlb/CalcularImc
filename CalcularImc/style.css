@@ -1,77 +1,253 @@
-main{
-    display: flex;
-    width: 100vw;
-    height: 100vh;
-    justify-content: center;
-    align-items: center ;
-}
-.container{
-    display: flex;
-    flex-direction: column;
-    background: yellow;
-    width: 400px;
-    height: 700px;
-    align-items: center;
-    justify-content: space-evenly;
-    border-radius: 20px;
-    box-shadow: 0 0 10px black;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    font: bold 2.5rem serif;
-    border-bottom: solid 3px black ;
-    margin-bottom: 20px;
-}
-.input{
-    display: flex;
-    width: 300px;
-    height: 50px;
-    justify-content: space-between;
-    align-items: center;
-}
-.input input{
-    width: 200px;
-    height: 50px;
-    border-radius: 5px;
-    border: none;
-    outline: 0;
-    font: bold 1.5rem serif;
-    text-align: center;
-    
+:root {
+  --bg: #0f2027;
+  --card: #1a2f38;
+  --card2: #1e3a45;
+  --text: #e8f4f0;
+  --muted: #8ab3a8;
+  --border: #2a4a55;
+  --accent: #19c99a;
 }
 
-.input label{
-    font: bold 1.5rem serif;
-
-}
-button{
-width: 200px;
-height: 40px;
-font: bold 1.2rem serif;
-background: rgb(255, 255, 255);
-color: rgb(0, 0, 0);
-outline: none;
-border-radius: 5px;
-cursor: pointer;
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--bg);
 }
 
-.result{
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    width: 300px;
-    height: 150px;
-    border-radius: 5px;
-    font: italic 1.5rem serif;
-    background: white;
-    box-shadow: #000;
-    color: rgb(0, 0, 0);
-    padding: 20px;
-    box-sizing: border-box;
-    user-select: none;
+.wrap {
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, #0d3d2e 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, #0a2d3a 0%, transparent 50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 820px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 1.8rem;
+}
+
+.header h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.5px;
+}
+
+.header p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (max-width: 580px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+}
+
+.field input,
+.field select {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(25, 201, 154, 0.15);
+}
+
+.field input::placeholder {
+  color: #3d6059;
+  font-weight: 400;
+}
+
+.field select option {
+  background: #1a2f38;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--accent);
+  color: #05201a;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 0.5rem;
+  letter-spacing: 0.3px;
+}
+
+.btn:hover {
+  background: #10e0aa;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.result-box {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.result-box.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 30px rgba(25, 201, 154, 0.1);
+}
+
+.imc-value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.imc-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.imc-class {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  background: rgba(25, 201, 154, 0.12);
+  color: var(--accent);
+}
+
+.name-line {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+}
+
+.placeholder-text {
+  color: #3d6059;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.scale {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scale-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.scale-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.scale-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.alert {
+  color: #f87171;
+  font-size: 0.9rem;
+  text-align: center;
+  font-weight: 600;
 }

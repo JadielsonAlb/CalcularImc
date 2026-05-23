@@ -1,35 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>estudo</title>
-        <link rel="stylesheet" href="CalcularImc/style.css">
-      
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora IMC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CalcularImc/style.css">
 </head>
 <body>
-<main>
-<div class="container">
-    <div class="title"> Calculadora IMC </div>
-    <div class="input">
-        <label> Nome: </label>
-        <input type="text" id="nome">
+  <div class="wrap">
+    <div class="card">
+      <div class="header">
+        <h1>Calculadora de IMC</h1>
+        <p>Índice de Massa Corporal — informe seus dados abaixo</p>
+      </div>
+
+      <div class="layout">
+        <div class="form-section">
+
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Seu nome completo">
+          </div>
+
+          <div class="field">
+            <label for="genero">Gênero</label>
+            <select id="genero">
+              <option value="">Selecione o gênero</option>
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="altura">Altura (m)</label>
+              <input type="text" id="altura" placeholder="1,75" maxlength="4" inputmode="decimal">
+            </div>
+            <div class="field">
+              <label for="peso">Peso (kg)</label>
+              <input type="text" id="peso" placeholder="70,0" maxlength="5" inputmode="decimal">
+            </div>
+          </div>
+
+          <button class="btn" id="calcular">Calcular IMC</button>
+          <div id="alerta"></div>
+
+        </div>
+
+        <div class="result-section">
+          <div class="result-box" id="resultado">
+            <div class="placeholder-text">Preencha os campos ao lado e clique em calcular</div>
+          </div>
+
+          <div class="scale">
+            <div class="scale-title">Tabela de referência</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#60a5fa"></span>Abaixo de 18,5 — Abaixo do peso</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#19c99a"></span>18,5 – 24,9 — Peso ideal</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#facc15"></span>25,0 – 29,9 — Levemente acima</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#fb923c"></span>30,0 – 34,9 — Obesidade grau I</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#f87171"></span>35,0 – 39,9 — Obesidade grau II</div>
+            <div class="scale-item"><span class="scale-dot" style="background:#c026d3"></span>40,0 ou mais — Obesidade mórbida</div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    
-    <div class="input">
-        <label> Altura: </label>
-        <input type="number" id="altura">
-    </div>
-    
-    <div class="input">
-        <label> Peso: </label>
-        <input type="number" id="peso">
-    </div>
-    <button id="calcular"> Calcular</button>
-    <div class="result" id="resultado"></div>
-    
-</div>
-</main>
-    <script src="js/imc.js"></script>
+  </div>
+
+  <script src="js/imc.js"></script>
 </body>
 </html>
